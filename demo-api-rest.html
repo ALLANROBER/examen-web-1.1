@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Demo API REST</title>
+  <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    #cardResultado { display: none; } /* oculto al inicio */
+  </style>
+</head>
+<body>
+  <h1>Demo API REST</h1>
+  <button id="btnCargar" class="btn btn-primary mb-3">Cargar Mensaje</button>
+
+  <div id="cardResultado" class="card">
+    <div class="card-body">
+      <h5 class="card-title">Mensaje de la API</h5>
+      <p id="mensajeApi" class="card-text"></p>
+    </div>
+  </div>
+
+  <script src="./js/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('#btnCargar').click(function(){
+        $.ajax({
+          url: 'https://s1uplfovq4.execute-api.us-east-1.amazonaws.com/default/example',
+          method: 'GET',
+          success: function(data){
+            // Mostrar solo el atributo 'mensaje'
+            $('#mensajeApi').text(data.mensaje);
+            $('#cardResultado').fadeIn();
+          },
+          error: function(err){
+            $('#mensajeApi').text('Error al cargar la API: ' + err.statusText);
+            $('#cardResultado').fadeIn();
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
