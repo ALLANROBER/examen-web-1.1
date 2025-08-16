@@ -5,14 +5,14 @@ body {
 .container {
   max-width: 500px;
 }
-#avatar {
+#ALLAN {
   width: 120px;
   height: 120px;
   object-fit: cover;
   border: 3px solid #dee2e6;
   transition: transform 0.3s ease;
 }
-#avatar:hover {
+#ALLAN:hover {
   transform: scale(1.1);
 }
 input:focus, textarea:focus {
